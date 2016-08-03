@@ -1,7 +1,12 @@
 function Thermostat () {
-  this.temperature = 20;
+  this.DEFAULT_TEMPERATURE = 20;
+  this.MIN_TEMPERATURE = 10;
+  this.MAX_TEMPERATURE = 32;
+  this.POWERSAVING_MAX_TEMPERATURE = 25;
+  this.temperature = this.DEFAULT_TEMPERATURE;
   this.powerSaving = true;
-  this.max = 25;
+  this.max = this.POWERSAVING_MAX_TEMPERATURE;
+
 }
 Thermostat.prototype = {
   up : function () {
@@ -17,16 +22,16 @@ Thermostat.prototype = {
 },
   powerSavingOff : function() {
     this.powerSaving = false;
-    this.max = 32
+    this.max = this.MAX_TEMPERATURE;
     this.changeColour();
   },
   powerSavingOn : function() {
     this.powerSaving = true;
-    this.max = 25;
+    this.max = this.POWERSAVING_MAX_TEMPERATURE;
     this.changeColour();
   },
   reset : function () {
-    this.temperature = 20;
+    this.temperature = this.DEFAULT_TEMPERATURE;
     this.changeColour();
   },
   changeColour : function(){
@@ -37,7 +42,7 @@ Thermostat.prototype = {
       document.body.style.backgroundColor = "gold";
     }
     else {
-      document.body.style.backgroundColor = "crimson";      
+      document.body.style.backgroundColor = "crimson";
     }
   }
 };

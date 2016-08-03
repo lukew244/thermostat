@@ -1,0 +1,50 @@
+gauge {
+            position: relative;
+            display: block;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            border: solid;
+            border-radius: 100%;
+            text-align: center;
+            }
+
+ButtonBar {
+            margin: auto;
+            width: 800px;
+            display: block;
+            text-align: center;
+            height: 100px;
+        }
+
+
+input.gauge_button {
+            margin: 20px;
+            height: 50px;
+            width: 50px;
+            border: solid;
+            border-radius: 100%;
+            box-shadow: 2px 2px;
+            background-color: white;
+}
+
+input.gauge_button:hover {
+            box-shadow: 0px 0px;
+            transform: translateX(-2px);
+            transform: translateY(-2px);
+          }
+
+.display {
+            width: 1000px;
+            height: 100%;
+            margin: auto;
+            display: block;
+}
+
+
+.MinMax {
+            display: inline-block;
+            position: relative;
+            left: 70%;
+            top: 50px;
+        }
