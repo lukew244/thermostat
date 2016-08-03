@@ -7,6 +7,18 @@ describe('Thermostat', function(){
     thermostat = new Thermostat;
   })
 
+  var setMinTemp = function(){
+    for(var i = 0; i < MINIMUM_TEMP; i++){
+      thermostat.down();
+    }
+  }
+
+  var setMaxTemp = function(){
+    for(var i = 0; i < (thermostat.maximumTemp - DEFAULT_TEMP); i++){
+      thermostat.up();
+    }
+  }
+
   describe('initial state',function(){
     it('starts at 20 degrees', function(){
       expect(thermostat.temperature).toEqual(DEFAULT_TEMP);
@@ -20,9 +32,7 @@ describe('Thermostat', function(){
     })
 
     it('cannot go above maximum temperature', function(){
-      for(var i = 0; i < (thermostat.maximumTemp - DEFAULT_TEMP); i++){
-        thermostat.up();
-      }
+      setMaxTemp();
       expect(function(){
         thermostat.up();
       }).toThrowError("Cannot go above maximum temperature");
@@ -36,9 +46,7 @@ describe('Thermostat', function(){
     })
 
     it('cannot go below minimum temperature',function(){
-      for(var i = 0; i < MINIMUM_TEMP; i++){
-        thermostat.down();
-      }
+      setMinTemp();
       expect(function(){
         thermostat.down();
       }).toThrowError("Cannot go below minimum temperature");
@@ -58,9 +66,7 @@ describe('Thermostat', function(){
 
   describe('reset temperature', function(){
     it('sets the temperature to default temperature', function(){
-      for(var i = 0; i < MINIMUM_TEMP; i++){
-        thermostat.down();
-      }
+      setMinTemp();
       thermostat.resetTemp();
       expect(thermostat.temperature).toEqual(DEFAULT_TEMP);
     })
@@ -68,9 +74,7 @@ describe('Thermostat', function(){
 
   describe('energy usage', function(){
     it('shows low for low usage', function(){
-      for(var i = 0; i < MINIMUM_TEMP; i++){
-        thermostat.down();
-      }
+      setMinTemp();
       expect(thermostat.energyUsage()).toEqual('Low');
     })
 
@@ -79,9 +83,7 @@ describe('Thermostat', function(){
     })
 
     it('shows high for high usage', function(){
-      for(var i = 0; i < (thermostat.maximumTemp - DEFAULT_TEMP); i++){
-        thermostat.up();
-      }
+      setMaxTemp();
       expect(thermostat.energyUsage()).toEqual('High');
     })
   })
