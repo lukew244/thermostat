@@ -5,17 +5,19 @@
     <title>Thermostat!</title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="style.css">
-    <script src="js/thermostat.js"></script>
+    <script src="src/thermostat.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body>
     <div class="thermostat">
-      text
+      <p id="temperature"></p>
     </div>
 
     <div class="buttons">
-      <input type="button" name="tempDown" value="-"></input>
-      <input type="button" name="tempUp" value="+"></input>
-      <input type="button" name="resetTemp" value="Reset"></input>
+      <button id="tempDown">-</button>
+      <button id="tempUp">+</button>
+      <button id="resetTemp">Reset</button>
     </div>
 
     <div class="powerSaving">
