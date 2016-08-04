@@ -53,12 +53,21 @@ describe('Thermostat', function(){
 
   describe('powerSaving', function(){
     it('changes maximum temperature when power saving', function(){
+      thermostat.powerSavingOn();
       expect(thermostat.maximumTemp).toEqual(MAXIMUM_TEMP['powerSaving']);
     })
 
     it('changes maximum temperature when not power saving', function(){
-      thermostat.togglePowerSaving();
+      thermostat.powerSavingOff();
       expect(thermostat.maximumTemp).toEqual(MAXIMUM_TEMP['noPowerSaving']);
+    })
+
+    it('resets temperature if over max temp', function(){
+      thermostat.powerSavingOff();
+      setMaxTemp();
+      expect(thermostat.temperature).toEqual(MAXIMUM_TEMP['noPowerSaving']);
+      thermostat.powerSavingOn();
+      expect(thermostat.temperature).toEqual(MAXIMUM_TEMP['powerSaving']);
     })
   })
 
@@ -73,16 +82,16 @@ describe('Thermostat', function(){
   describe('energy usage', function(){
     it('shows low for low usage', function(){
       setMinTemp();
-      expect(thermostat.energyUsage()).toEqual('Low');
+      expect(thermostat.energyUsage()).toEqual('low');
     })
 
     it('shows medium for medium usage', function(){
-      expect(thermostat.energyUsage()).toEqual('Medium');
+      expect(thermostat.energyUsage()).toEqual('medium');
     })
 
     it('shows high for high usage', function(){
       setMaxTemp();
-      expect(thermostat.energyUsage()).toEqual('High');
+      expect(thermostat.energyUsage()).toEqual('high');
     })
   })
 })
