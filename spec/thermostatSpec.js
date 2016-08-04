@@ -33,9 +33,8 @@ describe('Thermostat', function(){
 
     it('cannot go above maximum temperature', function(){
       setMaxTemp();
-      expect(function(){
-        thermostat.up();
-      }).toThrowError("Cannot go above maximum temperature");
+      thermostat.up(); //trying to go above max temp
+      expect(thermostat.temperature).toEqual(thermostat.maximumTemp);
     })
   })
 
@@ -47,9 +46,8 @@ describe('Thermostat', function(){
 
     it('cannot go below minimum temperature',function(){
       setMinTemp();
-      expect(function(){
-        thermostat.down();
-      }).toThrowError("Cannot go below minimum temperature");
+      thermostat.down(); //trying to go below min temp
+      expect(thermostat.temperature).toEqual(thermostat.minimumTemp);
     })
   })
 

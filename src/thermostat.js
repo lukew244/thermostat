@@ -14,16 +14,20 @@ var Thermostat = function(temperature = DEFAULT_TEMP){
 
 Thermostat.prototype.up = function(){
   if (this.checkMaximumTemp()){
-    throw new Error("Cannot go above maximum temperature");
+    this.temperature = this.maximumTemp;
   }
-  this.temperature++;
+  else {
+    this.temperature++;
+  }
 }
 
 Thermostat.prototype.down = function(){
   if (this.checkMinimumTemp()){
-    throw new Error("Cannot go below minimum temperature");
+    this.temperature = this.minimumTemp;
   }
-  this.temperature--;
+  else{
+    this.temperature--;
+  }
 }
 
 Thermostat.prototype.checkMinimumTemp = function(){
