@@ -1,4 +1,5 @@
 'use strict';
+// HELLO
 
 describe('Thermostat', function(){
   var thermostat
