@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Thermostat </title>
+</head>
+  <body>
+    <section>
+
+      <h1 id='temperature'></h1>
+      <p>
+        <button id='temp-up'>+</button>
+        <button id='temp-down'>-</button>
+        <button id='temp-reset'>reset</button>
+          power saving mode is <span id='power-saving-status'>on</span>
+        <button id='powersaving-on'>Power save ON</button>
+        <button id='powersaving-off'>Power save OFF</button>
+      </p>
+    </section>
+    <script src="jasmine-standalone-2.4.1/src/thermostat.js"></script>
+    <script src="jquery-3.1.0.js"></script>
+    <script src='thermostatFinal.js'></script>
+    <link rel="stylesheet" type="text/css" href='stylesheet.css'>
+
+    <section>
+      <h2> What city are you in? </h2>
+      <form id='select-city'>
+      <input id='current-city' type='text' placeholder='Enter a city'></input>
+      <input type='submit'></input>
+      </form>
+      <h1 id='outside_city'></h1><h1 id='outside_temp'></h2>
+    </section>
+  </body>
+
+</html>
